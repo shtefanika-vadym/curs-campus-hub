@@ -47,7 +47,10 @@ Repeți pașii din sesiunea 11, pe folderul tău cu Campus Hub: `git init`, `git
    ```
    git clone ADRESA-COPIATĂ
    ```
-3. Fă același lucru pentru `curs-campus-hub` (adresa o dă trainerul).
+3. Fă același lucru pentru `curs-campus-hub`:
+   ```
+   git clone https://github.com/shtefanika-vadym/curs-campus-hub.git
+   ```
 
 La prima trimitere (`git push`), Git poate cere să te autentifici cu GitHub, într-o fereastră de browser. Urmează pașii. Dacă nu merge, spune-i trainerului.
 
