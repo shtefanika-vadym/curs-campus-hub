@@ -8,8 +8,10 @@ Repo-ul cursului Web Development (IT School, cohorta 2026). Îl scrie doar train
 
 ```
 curs-campus-hub/
-└── 13-js-tipuri-de-date/
-    └── sesiunea-13.js          exercițiile sesiunii, de copiat în proiectul tău
+├── 13-js-tipuri-de-date/
+│   └── sesiunea-13.js          exercițiile sesiunii, de copiat în proiectul tău
+└── 14-js-functii/
+    └── sesiunea-14.js          exercițiile sesiunii 14, de copiat în proiectul tău
 ```
 
 Fiecare sesiune are un folder, cu fișierele ei direct în el. Copiezi fișierele în **proiectul tău** (`campus-hub`), de exemplu `sesiunea-13.js` în `campus-hub/js/`.
@@ -21,6 +23,14 @@ Fiecare sesiune are un folder, cu fișierele ei direct în el. Copiezi fișierel
 3. Copiază `13-js-tipuri-de-date/sesiunea-13.js` în `campus-hub/js/`.
 4. Deschide fișierul în VS Code, rezolvă exercițiile și rulează cu **Ctrl+Alt+N**.
 5. `git add .`, `git commit -m "Sesiunea 13: tipuri de date"`, `git push origin sesiunea-13`, apoi Pull Request în `main`.
+
+## Sesiunea 14 pe scurt
+
+1. În `curs-campus-hub`: `git pull`.
+2. În `campus-hub`: `git checkout main`, `git pull`, `git checkout -b sesiunea-14`.
+3. Copiază `14-js-functii/sesiunea-14.js` în `campus-hub/js/`.
+4. Deschide fișierul în VS Code, rezolvă exercițiile și rulează cu **Ctrl+Alt+N**.
+5. `git add .`, `git commit -m "Sesiunea 14: funcții"`, `git push origin sesiunea-14`, apoi Pull Request în `main`.
 
 ## Tag-uri: „pozele” repo-ului
 
