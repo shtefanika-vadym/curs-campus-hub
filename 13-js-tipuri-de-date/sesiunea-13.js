@@ -13,9 +13,14 @@
    [ ] Output arată Hackathon și Sala A2
    [ ] Fișierul sesiunea-13.js este salvat înainte de Run
    [ ] În console.log numele variabilei nu are ghilimele
+   OUTPUT AȘTEPTAT:
+     Hackathon
+     Sala A2
    INDICIU: let nume = valoare → cutie nouă cu etichetă · numele variabilei fără ghilimele,
      textul între ghilimele · console.log(nume) → afișezi ce e în cutie · Run Code
-     (Ctrl+Alt+N) → vezi rezultatul în Output. */
+     (Ctrl+Alt+N) → vezi rezultatul în Output.
+   GREȘEALĂ FRECVENTĂ: Scrii console.log("eveniment") cu ghilimele: apare cuvântul
+     eveniment, nu valoarea din cutie. */
 
 
 /* ===== Exercițiul 2 · SINGUR · 2 min · Locurile libere, în variabilă =====
@@ -23,8 +28,12 @@
    E GATA CÂND:
    [ ] Output arată 40
    [ ] Variabila se numește exact locuriLibere
+   OUTPUT AȘTEPTAT:
+     40
    INDICIU: let locuriLibere = 40 → cutia nouă, cu eticheta locuriLibere ·
-     console.log(locuriLibere) → afișezi ce e în cutie, fără ghilimele. */
+     console.log(locuriLibere) → afișezi ce e în cutie, fără ghilimele.
+   GREȘEALĂ FRECVENTĂ: Scrii console.log("locuriLibere") cu ghilimele: apare numele, nu
+     valoarea 40. */
 
 
 /* ===== Exercițiul 3 · GHIDAT · 4 min · Ce tip are fiecare valoare? =====
@@ -34,8 +43,14 @@
    [ ] Consola arată string, number, boolean
    [ ] Fiecare typeof este în interiorul unui console.log
    [ ] Textul Hackathon are ghilimele
+   OUTPUT AȘTEPTAT:
+     string
+     number
+     boolean
    INDICIU: typeof valoare → îți spune tipul · string = text, number = număr, boolean =
-     adevărat sau fals · îl pui în console.log ca să-l vezi. */
+     adevărat sau fals · îl pui în console.log ca să-l vezi.
+   GREȘEALĂ FRECVENTĂ: Scrii typeof "40" și te miri că iese string: ghilimelele fac din
+     cifre un text. */
 
 
 /* ===== Exercițiul 4 · SINGUR · 4 min · Workshop CSS, pe tipuri =====
@@ -46,8 +61,14 @@
    [ ] Consola arată string, number, boolean, undefined
    [ ] 25 și false nu au ghilimele
    [ ] salaWorkshop nu are nicio valoare
+   OUTPUT AȘTEPTAT:
+     string
+     number
+     boolean
+     undefined
    INDICIU: Text între ghilimele · număr și true/false fără ghilimele · let salaWorkshop
-     (fără =) lasă cutia goală · typeof salaWorkshop → undefined. */
+     (fără =) lasă cutia goală · typeof salaWorkshop → undefined.
+   GREȘEALĂ FRECVENTĂ: Scrii "false" cu ghilimele: devine text, nu boolean. */
 
 
 /* ===== Exercițiul 5 · GHIDAT · 5 min · Toți operatorii, pe rând =====
@@ -58,8 +79,22 @@
    [ ] Output arată 68, 12, 80, 20 pentru cele patru calcule
    [ ] Output arată true, true, true, false pentru cele patru comparări
    [ ] Output arată false, true, false pentru && || !
-   INDICIU: + - * / → aritmetic, dau un număr · < > === !== → comparare, dau true sau false ·
-     && || ! → logic, combină true și false · fiecare calcul stă într-un console.log. */
+   OUTPUT AȘTEPTAT:
+     68
+     12
+     80
+     20
+     true
+     true
+     true
+     false
+     false
+     true
+     false
+   INDICIU: + - * / → aritmetic, dau un număr · < > === !== → comparare, dau true sau false
+     · && || ! → logic, combină true și false · fiecare calcul stă într-un console.log.
+   GREȘEALĂ FRECVENTĂ: Scrii 40 = 40 în loc de 40 === 40: cu un singur = pui o valoare, nu
+     compari. */
 
 
 /* ===== Exercițiul 6 · GHIDAT · 5 min · Câte locuri mai sunt libere? =====
@@ -68,19 +103,26 @@
    E GATA CÂND:
    [ ] Output arată Locuri libere: 12
    [ ] locuriRamase este calculat, nu scris de mână
+   OUTPUT AȘTEPTAT:
+     Locuri libere: 12
    INDICIU: locuri - inscrisi → scade două numere · rezultatul se salvează într-o variabilă
-     nouă · "text" + variabilă → lipește textul de valoare. */
+     nouă · "text" + variabilă → lipește textul de valoare.
+   GREȘEALĂ FRECVENTĂ: Uiți spațiul din text: iese Locuri libere:12, lipit. */
 
 
 /* ===== Exercițiul 7 · SINGUR · 4 min · Se mai poate înscrie cineva? =====
-   CE FACI: În același fișier: hackathonul primește înscrieri dacă mai are locuri rămase și e
-     gratuit (pret 0). Calculează cele două condiții cu comparări, combină-le cu && și
+   CE FACI: În același fișier: hackathonul primește înscrieri dacă mai are locuri rămase și
+     e gratuit (pret 0). Calculează cele două condiții cu comparări, combină-le cu && și
      afișează rezultatul.
    E GATA CÂND:
    [ ] Output arată true
    [ ] Ai folosit === (trei egaluri), nu =
-   INDICIU: locuriRamase > 0 → true dacă mai sunt locuri · pret === 0 → true dacă e gratuit ·
-     && → true doar când ambele sunt true. */
+   OUTPUT AȘTEPTAT:
+     true
+   INDICIU: locuriRamase > 0 → true dacă mai sunt locuri · pret === 0 → true dacă e gratuit
+     · && → true doar când ambele sunt true.
+   GREȘEALĂ FRECVENTĂ: Scrii pret = 0 în loc de pret === 0: cu un singur = pui o valoare, nu
+     compari. */
 
 
 /* ===== Exercițiul 8 · SINGUR · 3 min · Evenimentul tău =====
@@ -91,8 +133,13 @@
    [ ] Output arată numele evenimentului și true sau false
    [ ] gratuitTau este calculat cu ===, nu scris de mână
    [ ] Datele sunt ale tale: nu trebuie să semene cu ale colegului
+   OUTPUT AȘTEPTAT:
+     numele evenimentului tău
+     true sau false
    INDICIU: numeTau e text, locuriTau și pretTau sunt numere · gratuitTau = pretTau === 0 →
-     true dacă prețul e 0 · console.log(numeTau) și console.log(gratuitTau) → afișezi. */
+     true dacă prețul e 0 · console.log(numeTau) și console.log(gratuitTau) → afișezi.
+   GREȘEALĂ FRECVENTĂ: Schimbi numele locuriTau sau pretTau: sesiunea 14 le reia, deci
+     păstrează-le exact așa. */
 
 
 /* ===== TEMĂ DE ACASĂ · Meetup-ul, descris în JavaScript =====
@@ -107,7 +154,15 @@
    [ ] Cu typeof afișezi tipul a trei variabile și poți spune de ce e fiecare string, number
      sau boolean
    [ ] Ai trimis lucrul pe GitHub: branch sesiunea-13, Pull Request unit în main
+   OUTPUT AȘTEPTAT (exemplu):
+     Meetup JS
+     Locuri libere: 18
+     string
+     number
+     boolean
    INDICIU: Aceleași mișcări ca la exercițiile din clasă: let nume = valoare · text între
      ghilimele, numere și true/false fără · locuri - inscrisi → locurile rămase, salvate
      într-o variabilă nouă · "Locuri libere: " + variabila → mesajul · typeof variabila →
-     tipul. */
+     tipul.
+   GREȘEALĂ FRECVENTĂ: Scrii typeof "40" și te miri că iese string: ghilimelele fac din
+     cifre un text. */
