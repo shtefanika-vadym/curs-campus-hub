@@ -93,3 +93,21 @@
    [ ] Datele sunt ale tale: nu trebuie să semene cu ale colegului
    INDICIU: numeTau e text, locuriTau și pretTau sunt numere · gratuitTau = pretTau === 0 →
      true dacă prețul e 0 · console.log(numeTau) și console.log(gratuitTau) → afișezi. */
+
+
+/* ===== TEMĂ DE ACASĂ · Meetup-ul, descris în JavaScript =====
+   CE FACI: Descrie în js/sesiunea-13.js evenimentul Meetup din Campus Hub, cu variabile și
+     operatori, și afișează rezultatul cu console.log. Folosești nume noi pentru variabile
+     (de exemplu numeMeetup, locuriMeetup), ca să nu le repeți pe cele de mai sus.
+   E GATA CÂND:
+   [ ] Ai variabile pentru Meetup: nume, zi, oră, preț și număr de locuri
+   [ ] Toate variabilele sunt create cu let, fiecare cu numele și valoarea ei
+   [ ] Locurile libere sunt calculate cu un operator, nu scrise de mână
+   [ ] Un console.log afișează un mesaj cu +, de exemplu Locuri libere: 18
+   [ ] Cu typeof afișezi tipul a trei variabile și poți spune de ce e fiecare string, number
+     sau boolean
+   [ ] Ai trimis lucrul pe GitHub: branch sesiunea-13, Pull Request unit în main
+   INDICIU: Aceleași mișcări ca la exercițiile din clasă: let nume = valoare · text între
+     ghilimele, numere și true/false fără · locuri - inscrisi → locurile rămase, salvate
+     într-o variabilă nouă · "Locuri libere: " + variabila → mesajul · typeof variabila →
+     tipul. */
