@@ -22,6 +22,11 @@
    GREȘEALĂ FRECVENTĂ: Scrii console.log("eveniment") cu ghilimele: apare cuvântul
      eveniment, nu valoarea din cutie. */
 
+let eveniment = "Hackathon"
+let sala = "Sala A2"
+console.log(eveniment)
+console.log(sala)
+
 
 /* ===== Exercițiul 2 · SINGUR · 2 min · Locurile libere, în variabilă =====
    CE FACI: Creează o variabilă locuriLibere cu valoarea 40 și afișeaz-o cu console.log.
@@ -34,6 +39,9 @@
      console.log(locuriLibere) → afișezi ce e în cutie, fără ghilimele.
    GREȘEALĂ FRECVENTĂ: Scrii console.log("locuriLibere") cu ghilimele: apare numele, nu
      valoarea 40. */
+
+let locuriLibere = 40
+console.log(locuriLibere)
 
 
 /* ===== Exercițiul 3 · GHIDAT · 4 min · Ce tip are fiecare valoare? =====
@@ -52,6 +60,10 @@
    GREȘEALĂ FRECVENTĂ: Scrii typeof "40" și te miri că iese string: ghilimelele fac din
      cifre un text. */
 
+console.log(typeof "Hackathon")
+console.log(typeof 40)
+console.log(typeof true)
+
 
 /* ===== Exercițiul 4 · SINGUR · 4 min · Workshop CSS, pe tipuri =====
    CE FACI: Descrie Workshop CSS în variabile: workshop (text), locuriWorkshop 25 (număr),
@@ -69,6 +81,15 @@
    INDICIU: Text între ghilimele · număr și true/false fără ghilimele · let salaWorkshop
      (fără =) lasă cutia goală · typeof salaWorkshop → undefined.
    GREȘEALĂ FRECVENTĂ: Scrii "false" cu ghilimele: devine text, nu boolean. */
+
+let workshop = "Workshop CSS"
+let locuriWorkshop = 25
+let esteGratuitWorkshop = false
+let salaWorkshop
+console.log(typeof workshop)
+console.log(typeof locuriWorkshop)
+console.log(typeof esteGratuitWorkshop)
+console.log(typeof salaWorkshop)
 
 
 /* ===== Exercițiul 5 · GHIDAT · 5 min · Toți operatorii, pe rând =====
@@ -96,6 +117,18 @@
    GREȘEALĂ FRECVENTĂ: Scrii 40 = 40 în loc de 40 === 40: cu un singur = pui o valoare, nu
      compari. */
 
+console.log(40 + 28)
+console.log(40 - 28)
+console.log(40 * 2)
+console.log(40 / 2)
+console.log(28 < 40)
+console.log(40 > 28)
+console.log(40 === 40)
+console.log(40 !== 40)
+console.log(true && false)
+console.log(true || false)
+console.log(!true)
+
 
 /* ===== Exercițiul 6 · GHIDAT · 5 min · Câte locuri mai sunt libere? =====
    CE FACI: Din 40 de locuri, 28 sunt ocupate. Calculează locurile rămase cu variabile și
@@ -108,6 +141,11 @@
    INDICIU: locuri - inscrisi → scade două numere · rezultatul se salvează într-o variabilă
      nouă · "text" + variabilă → lipește textul de valoare.
    GREȘEALĂ FRECVENTĂ: Uiți spațiul din text: iese Locuri libere:12, lipit. */
+
+let locuri = 40
+let inscrisi = 28
+let locuriRamase = locuri - inscrisi
+console.log("Locuri libere: " + locuriRamase)
 
 
 /* ===== Exercițiul 7 · SINGUR · 4 min · Se mai poate înscrie cineva? =====
@@ -123,6 +161,12 @@
      · && → true doar când ambele sunt true.
    GREȘEALĂ FRECVENTĂ: Scrii pret = 0 în loc de pret === 0: cu un singur = pui o valoare, nu
      compari. */
+
+let pret = 0
+let areLocuri = locuriRamase > 0
+let esteGratuit = pret === 0
+let sePoateInscrie = areLocuri && esteGratuit
+console.log(sePoateInscrie)
 
 
 /* ===== Exercițiul 8 · SINGUR · 3 min · Evenimentul tău =====
@@ -140,6 +184,13 @@
      true dacă prețul e 0 · console.log(numeTau) și console.log(gratuitTau) → afișezi.
    GREȘEALĂ FRECVENTĂ: Schimbi numele locuriTau sau pretTau: sesiunea 14 le reia, deci
      păstrează-le exact așa. */
+
+let numeTau = "Concert în parc"
+let locuriTau = 120
+let pretTau = 35
+let gratuitTau = pretTau === 0
+console.log(numeTau)
+console.log(gratuitTau)
 
 
 /* ===== TEMĂ DE ACASĂ · Meetup-ul, descris în JavaScript =====
@@ -166,3 +217,16 @@
      tipul.
    GREȘEALĂ FRECVENTĂ: Scrii typeof "40" și te miri că iese string: ghilimelele fac din
      cifre un text. */
+
+let numeMeetup = "Meetup JS"
+let ziMeetup = "sâmbătă"
+let oraMeetup = "18:00"
+let pretMeetup = 0
+let locuriMeetup = 50
+let inscrisiMeetup = 32
+let locuriRamaseMeetup = locuriMeetup - inscrisiMeetup
+console.log(numeMeetup)
+console.log("Locuri libere: " + locuriRamaseMeetup)
+console.log(typeof numeMeetup)
+console.log(typeof locuriMeetup)
+console.log(typeof (pretMeetup === 0))
