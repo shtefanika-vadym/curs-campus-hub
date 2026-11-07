@@ -193,3 +193,15 @@ console.log(gratuitTau);
      tipul.
    GREȘEALĂ FRECVENTĂ: Scrii typeof "40" și te miri că iese string: ghilimelele fac din
      cifre un text. */
+
+let numeMeetup = "Meetup JS";
+let ziMeetup = "Vineri";
+let oraMeetup = "18:00";
+let locuriMeetup = 30;
+let inscrisiMeetup = 12;
+let libereMeetup = locuriMeetup - inscrisiMeetup;
+console.log(numeMeetup);
+console.log("Locuri libere: " + libereMeetup);
+console.log(typeof numeMeetup);
+console.log(typeof locuriMeetup);
+console.log(typeof libereMeetup);
