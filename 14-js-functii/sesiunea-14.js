@@ -250,3 +250,22 @@ afiseazaHarta(5, 2)
      raportEveniment("Concert", 100, 100, 35).
    GREȘEALĂ FRECVENTĂ: Pui let total = 0; în interiorul buclei: la fiecare tură total revine
      la 0 și toate rândurile arată același preț. */
+
+
+function raportEveniment(nume, locuriTotale, locuriOcupate, pret) {
+  let locuriLibere = locuriTotale - locuriOcupate
+  if (locuriLibere === 0) {
+    console.log(nume + ": Plin")
+  } else if (locuriLibere <= 5) {
+    console.log(nume + ": Ultimele locuri")
+  } else {
+    console.log(nume + ": Locuri libere")
+  }
+  let total = 0
+  for (let i = 1; i <= 3; i++) {
+    total = total + pret
+    console.log("Bilete: " + i + ", total: " + total)
+  }
+}
+raportEveniment("Hackathon", 40, 28, 40)
+raportEveniment("Concert", 100, 100, 35)
