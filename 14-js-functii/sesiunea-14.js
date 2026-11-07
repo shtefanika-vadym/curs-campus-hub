@@ -27,6 +27,12 @@
 let esteStudent = true
 let pretBilet = 40
 
+if (esteStudent) {
+  console.log("Preț bilet: " + pretBilet / 2)
+} else {
+  console.log("Preț bilet: " + pretBilet)
+}
+
 
 /* ===== Exercițiul 2 · SINGUR · 5 min · Mesajul pentru locurile libere =====
    CE FACI: Afișează un mesaj după locuriDisponibile: 0 → „Plin”, cel mult 5 → „Ultimele
@@ -45,6 +51,14 @@ let pretBilet = 40
 
 let locuriDisponibile = 3
 
+if (locuriDisponibile === 0) {
+  console.log("Stare: Plin")
+} else if (locuriDisponibile <= 5) {
+  console.log("Stare: Ultimele locuri")
+} else {
+  console.log("Stare: Locuri libere")
+}
+
 
 /* ===== Exercițiul 3 · GHIDAT · 6 min · Prima funcție: salut =====
    CE FACI: Scrie funcția salut(nume) care întoarce „Salut, ” + nume + „!”. Apeleaz-o pentru
@@ -60,6 +74,12 @@ let locuriDisponibile = 3
      din funcție · console.log(salut("Ana")) → apelul și afișarea.
    GREȘEALĂ FRECVENTĂ: Uiți return: funcția calculează textul, dar nu îl trimite înapoi, iar
      în Output apare undefined. */
+
+function salut(nume) {
+  return "Salut, " + nume + "!"
+}
+console.log(salut("Ana"))
+console.log(salut("Mihai"))
 
 
 /* ===== Exercițiul 4 · SINGUR · 5 min · calculeazaPret(pret, esteStudent) =====
@@ -77,6 +97,15 @@ let locuriDisponibile = 3
      return ...; } → cazul studentului · return pret; → restul cazurilor.
    GREȘEALĂ FRECVENTĂ: Pui else după return fără să ai nevoie: return oprește funcția, deci
      return pret; la final e suficient. */
+
+function calculeazaPret(pret, esteStudent) {
+  if (esteStudent) {
+    return pret / 2
+  }
+  return pret
+}
+console.log("Preț student: " + calculeazaPret(40, true))
+console.log("Preț întreg: " + calculeazaPret(40, false))
 
 
 /* ===== Exercițiul 5 · GHIDAT · 5 min · Locurile de la 1 la 5 =====
@@ -96,6 +125,10 @@ let locuriDisponibile = 3
      pas: crește i cu 1 · în interior: console.log("Locul " + i).
    GREȘEALĂ FRECVENTĂ: Scrii i < 5 în loc de i <= 5: bucla se oprește la Locul 4. */
 
+for (let i = 1; i <= 5; i++) {
+  console.log("Locul " + i)
+}
+
 
 /* ===== Exercițiul 6 · SINGUR · 5 min · Totalul pentru 4 bilete =====
    CE FACI: Calculează totalul pentru 4 bilete de student: un for adună prețul fiecărui
@@ -111,6 +144,12 @@ let locuriDisponibile = 3
      bilete: " + total) → după buclă.
    GREȘEALĂ FRECVENTĂ: Pui let total = 0; în interiorul buclei: la fiecare tură total revine
      la 0 și rezultatul e 20. */
+
+let total = 0
+for (let i = 1; i <= 4; i++) {
+  total = total + calculeazaPret(40, true)
+}
+console.log("Total 4 bilete: " + total)
 
 
 /* ===== Exercițiul 7 · GHIDAT · 8 min · Rezervarea biletelor =====
@@ -135,6 +174,19 @@ let locuriDisponibile = 3
    GREȘEALĂ FRECVENTĂ: Uiți să scazi locul după confirmare: toate cererile ies „confirmat”,
      chiar dacă locurile s-au terminat. */
 
+function rezervaBilete(locuriLibere, cereri) {
+  for (let i = 1; i <= cereri; i++) {
+    if (locuriLibere > 0) {
+      locuriLibere = locuriLibere - 1
+      console.log("Bilet " + i + ": confirmat")
+    } else {
+      console.log("Bilet " + i + ": Plin")
+    }
+  }
+  console.log("Locuri rămase: " + locuriLibere)
+}
+rezervaBilete(2, 4)
+
 
 /* ===== Exercițiul 8 · SINGUR · 4 min · Harta locurilor, cu Copilot =====
    CE FACI: Cere-i lui GitHub Copilot funcția afiseazaHarta(locuriTotale, locuriOcupate):
@@ -156,6 +208,17 @@ let locuriDisponibile = 3
      · dacă nu iese, rescrie comentariul mai precis.
    GREȘEALĂ FRECVENTĂ: Accepți sugestia fără s-o rulezi: Copilot poate greși, de exemplu
      pornește de la 0 în loc de 1. Verifică mereu în Output. */
+
+function afiseazaHarta(locuriTotale, locuriOcupate) {
+  for (let i = 1; i <= locuriTotale; i++) {
+    if (i <= locuriOcupate) {
+      console.log("Locul " + i + ": ocupat")
+    } else {
+      console.log("Locul " + i + ": liber")
+    }
+  }
+}
+afiseazaHarta(5, 2)
 
 
 /* ===== TEMĂ DE ACASĂ · Raportul evenimentului tău, într-o funcție =====
