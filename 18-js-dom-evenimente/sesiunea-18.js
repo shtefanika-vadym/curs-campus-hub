@@ -8,7 +8,6 @@
 // Exercițiile merg unul după altul, pe aceeași pagină, deci nu comentezi nimic după ce termini.
 // La DATE DE PORNIRE, codul de sub bloc e deja scris: nu-l modifici. Console arată o linie de titlu pentru fiecare exercițiu.
 
-
 /* ===== Exercițiul 1 · GHIDAT · 6 min · Primul click =====
    CE FACI: La click pe butonul „Adaugă”, descrierea de sub titlu se schimbă.
    PAȘI:
@@ -26,7 +25,11 @@
      numește "click", cu litere mici, între ghilimele; altfel nu se întâmplă nimic. */
 
 console.log("--- Exercițiul 1 ---");
-
+const buton1 = document.querySelector("#buton-adauga");
+const descriere1 = document.querySelector("#descriere");
+buton1.addEventListener("click", () => {
+  descriere1.textContent = "Ai apăsat pe Adaugă!";
+});
 
 /* ===== Exercițiul 2 · SINGUR · 2 min · Clasa la click =====
    CE FACI: La click pe descriere, pune pe ea clasa recomandat; la al doilea click,
@@ -46,7 +49,10 @@ console.log("--- Exercițiul 1 ---");
      clasa se schimbă o dată, la încărcarea paginii, nu la fiecare click. */
 
 console.log("--- Exercițiul 2 ---");
-
+const descriere2 = document.querySelector("#descriere");
+descriere2.addEventListener("click", () => {
+  descriere2.classList.toggle("recomandat");
+});
 
 /* ===== Exercițiul 3 · GHIDAT · 6 min · Scrii, pagina răspunde =====
    CE FACI: Pe măsură ce scrii în câmpul „Numele evenimentului”, descrierea îți spune câte
@@ -67,7 +73,16 @@ console.log("--- Exercițiul 2 ---");
      value; value e pe elementul din event.target. */
 
 console.log("--- Exercițiul 3 ---");
-
+const camp3 = document.querySelector("#input-eveniment");
+const descriere3 = document.querySelector("#descriere");
+camp3.addEventListener("input", (event) => {
+  descriere3.textContent = "Ai scris " + event.target.value.length + " litere";
+  if (event.target.value.length > 20) {
+    camp3.style.borderColor = "red";
+  } else {
+    camp3.style.borderColor = "#cbd5e1";
+  }
+});
 
 /* ===== Exercițiul 4 · SINGUR · 2 min · Câmpul se colorează =====
    CE FACI: Dacă numele scris în câmp are mai mult de 20 de litere, chenarul câmpului devine
@@ -91,7 +106,7 @@ console.log("--- Exercițiul 3 ---");
      funcția din Exercițiul 3. */
 
 console.log("--- Exercițiul 4 ---");
-
+// Codul cu if și else e în funcția de la "input" din Exercițiul 3.
 
 /* ===== Exercițiul 5 · SINGUR · 3 min · Scrie randeaza =====
    CE FACI: Pui bucla din sesiunea 17 într-o funcție, randeaza, care desenează cardurile din
@@ -115,7 +130,7 @@ console.log("--- Exercițiul 4 ---");
 console.log("--- Exercițiul 5 ---");
 let evenimente = [
   { id: 1, nume: "Hackathon", locuri: 20, pret: 90 },
-  { id: 2, nume: "Workshop CSS", locuri: 30, pret: 40 },
+  { id: 2, nume: "Workshop CSS", locuri: 0, pret: 40 },
   { id: 3, nume: "Meetup", locuri: 35, pret: 0 },
 ];
 let urmatorulId = 4;
@@ -138,6 +153,9 @@ function creeazaButon(text, clasa, actiune, id, laClick) {
 function creeazaCard(eveniment) {
   const card = document.createElement("div");
   card.classList.add("card");
+  if (eveniment.locuri === 0) {
+    card.classList.add("epuizat");
+  }
   const actiuni = document.createElement("div");
   actiuni.classList.add("card-actions");
   if (eveniment.id === idInEditare) {
@@ -145,22 +163,45 @@ function creeazaCard(eveniment) {
     campNume.classList.add("card-input");
     campNume.value = eveniment.nume;
     card.appendChild(campNume);
-    actiuni.appendChild(creeazaButon("Salvează", "btn-edit", "salveaza", eveniment.id, () => salveaza(eveniment.id, campNume.value)));
-    actiuni.appendChild(creeazaButon("Anulează", "btn-delete", "anuleaza", eveniment.id, () => anuleaza()));
+    actiuni.appendChild(
+      creeazaButon("Salvează", "btn-edit", "salveaza", eveniment.id, () =>
+        salveaza(eveniment.id, campNume.value),
+      ),
+    );
+    actiuni.appendChild(
+      creeazaButon("Anulează", "btn-delete", "anuleaza", eveniment.id, () =>
+        anuleaza(),
+      ),
+    );
   } else {
     const titlu = document.createElement("h3");
     titlu.textContent = eveniment.nume;
     const info = document.createElement("p");
-    info.textContent = eveniment.locuri + " locuri · " + eveniment.pret + " lei";
+    info.textContent =
+      eveniment.locuri + " locuri · " + eveniment.pret + " lei";
     card.appendChild(titlu);
     card.appendChild(info);
-    actiuni.appendChild(creeazaButon("Editează", "btn-edit", "editeaza", eveniment.id, () => editeaza(eveniment.id)));
-    actiuni.appendChild(creeazaButon("Șterge", "btn-delete", "sterge", eveniment.id, () => sterge(eveniment.id)));
+    actiuni.appendChild(
+      creeazaButon("Rezervă", "btn-edit", "rezerva", eveniment.id, () =>
+        rezerva(eveniment.id),
+      ),
+    );
+    actiuni.appendChild(
+      creeazaButon("Editează", "btn-edit", "editeaza", eveniment.id),
+    );
+    actiuni.appendChild(
+      creeazaButon("Șterge", "btn-delete", "sterge", eveniment.id),
+    );
   }
   card.appendChild(actiuni);
   return card;
 }
-
+function randeaza() {
+  lista.innerHTML = "";
+  evenimente.forEach((eveniment) => lista.appendChild(creeazaCard(eveniment)));
+  contor.textContent = evenimente.length;
+}
+randeaza();
 
 /* ===== Exercițiul 6 · GHIDAT · 10 min · Create: adaugă un eveniment =====
    CE FACI: La click pe „Adaugă”, numele din câmp devine un eveniment nou în listă, iar
@@ -185,7 +226,21 @@ function creeazaCard(eveniment) {
      funcția rulează imediat, la încărcarea paginii, iar la click nu se mai întâmplă nimic. */
 
 console.log("--- Exercițiul 6 ---");
+const butonAdauga = document.querySelector("#buton-adauga");
 
+function adauga() {
+  if (camp.value === "") {
+    descriere.textContent = "Scrie numele evenimentului";
+    return;
+  }
+  evenimente.push({ id: urmatorulId, nume: camp.value, locuri: 30, pret: 50 });
+  urmatorulId = urmatorulId + 1;
+  descriere.textContent = "Eveniment adăugat!";
+  camp.value = "";
+  randeaza();
+}
+
+butonAdauga.addEventListener("click", adauga);
 
 /* ===== Exercițiul 7 · SINGUR · 3 min · Delete: șterge un eveniment =====
    CE FACI: Butonul „Șterge” de pe fiecare card cheamă sterge(id); tu scrii funcția care
@@ -206,7 +261,10 @@ console.log("--- Exercițiul 6 ---");
      nu pe celelalte. */
 
 console.log("--- Exercițiul 7 ---");
-
+function sterge(id) {
+  evenimente = evenimente.filter((eveniment) => eveniment.id !== id);
+  randeaza();
+}
 
 /* ===== Exercițiul 8 · GHIDAT · 8 min · Update: editează numele =====
    CE FACI: „Editează” transformă numele din card într-un câmp; „Salvează” pune numele nou
@@ -231,7 +289,17 @@ console.log("--- Exercițiul 7 ---");
      deschis, pentru că randeaza îl desenează tot în modul de editare. */
 
 console.log("--- Exercițiul 8 ---");
+function editeaza(id) {
+  idInEditare = id;
+  randeaza();
+}
 
+function salveaza(id, numeNou) {
+  const index = evenimente.findIndex((eveniment) => eveniment.id === id);
+  evenimente[index].nume = numeNou;
+  idInEditare = null;
+  randeaza();
+}
 
 /* ===== Exercițiul 9 · SINGUR · 1 min · Anulează editarea =====
    CE FACI: Butonul „Anulează” din cardul aflat în editare cheamă anuleaza(); tu scrii
@@ -249,7 +317,10 @@ console.log("--- Exercițiul 8 ---");
      pe pagină cu câmpul deschis. */
 
 console.log("--- Exercițiul 9 ---");
-
+function anuleaza() {
+  idInEditare = null;
+  randeaza();
+}
 
 /* ===== Exercițiul 10 · GHIDAT · 6 min · Un singur ascultător pe listă, cu switch =====
    CE FACI: Ștergi și editezi printr-un singur ascultător pus pe listă, nu prin câte unul pe
@@ -279,7 +350,20 @@ console.log("--- Exercițiul 9 ---");
      (număr) în filter. */
 
 console.log("--- Exercițiul 10 ---");
-
+lista.addEventListener("click", (event) => {
+  const actiune = event.target.getAttribute("data-actiune");
+  const id = Number(event.target.getAttribute("data-id"));
+  switch (actiune) {
+    case "sterge":
+      sterge(id);
+      break;
+    case "editeaza":
+      editeaza(id);
+      break;
+    default:
+      return;
+  }
+});
 
 /* ===== Exercițiul 11 · SINGUR · 2 min · Evenimentul tău =====
    CE FACI: Pui în listă un eveniment real al tău, direct din cod, și îl încerci cu
@@ -300,7 +384,10 @@ console.log("--- Exercițiul 10 ---");
      primește același id ca evenimentul tău, iar butoanele lor se încurcă. */
 
 console.log("--- Exercițiul 11 ---");
-
+const evenimentTau = { id: urmatorulId, nume: "Meetup React", locuri: 25, pret: 0 };
+urmatorulId = urmatorulId + 1;
+evenimente.push(evenimentTau);
+randeaza();
 
 /* ===== TEMĂ DE ACASĂ · Rezervă loc pe card =====
    CE FACI: Fiecare card primește un buton „Rezervă” care scade locurile libere, iar cardul
@@ -328,3 +415,15 @@ console.log("--- Exercițiul 11 ---");
      cardurile.
    GREȘEALĂ FRECVENTĂ: Scazi locurile în obiect, dar uiți randeaza(): lista din memorie e
      alta, iar pagina arată încă numărul vechi. */
+
+console.log("--- Tema de acasă ---");
+function rezerva(id) {
+  const index = evenimente.findIndex((eveniment) => eveniment.id === id);
+  if (evenimente[index].locuri === 0) {
+    descriere.textContent = "Nu mai sunt locuri";
+    return;
+  }
+  evenimente[index].locuri = evenimente[index].locuri - 1;
+  descriere.textContent = "Loc rezervat!";
+  randeaza();
+}
