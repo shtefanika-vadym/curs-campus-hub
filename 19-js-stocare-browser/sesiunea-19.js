@@ -30,6 +30,8 @@
 
 console.log("--- Exercițiul 1 ---");
 
+localStorage.setItem("vizitator", "Ana");
+
 
 /* ===== Exercițiul 2 · SINGUR · 1 min · Citește amintirea =====
    CE FACI: Pagina citește vizitatorul din dulap și îl salută; dacă nu există, îl numește
@@ -51,6 +53,10 @@ console.log("--- Exercițiul 1 ---");
      null, iar pe pagină apare „Bine ai revenit, null!”. */
 
 console.log("--- Exercițiul 2 ---");
+
+const descriere2 = document.querySelector("#descriere");
+const vizitator2 = localStorage.getItem("vizitator") ?? "oaspete";
+descriere2.textContent = "Bine ai revenit, " + vizitator2 + "!";
 
 
 /* ===== Exercițiul 3 · SINGUR · 3 min · Câmpul își amintește =====
@@ -74,6 +80,15 @@ console.log("--- Exercițiul 2 ---");
 
 console.log("--- Exercițiul 3 ---");
 
+const camp3 = document.querySelector("#input-eveniment");
+camp3.addEventListener("input", (event) => {
+  localStorage.setItem("ciorna", event.target.value);
+});
+const ciorna3 = localStorage.getItem("ciorna");
+if (ciorna3 !== null) {
+  camp3.value = ciorna3;
+}
+
 
 /* ===== Exercițiul 4 · GHIDAT · 6 min · Local sau session? =====
    CE FACI: Pui câte o valoare în fiecare dulap și afli care rămâne într-un tab nou. Scrii
@@ -96,6 +111,10 @@ console.log("--- Exercițiul 3 ---");
 
 console.log("--- Exercițiul 4 ---");
 
+// Exercițiul 4 se face în Console (F12), nu în fișier. Comenzile:
+// localStorage.setItem("limba", "română");
+// sessionStorage.setItem("pas", "2");
+
 
 /* ===== Exercițiul 5 · GHIDAT · 7 min · Evenimentul tău, ca text =====
    CE FACI: Salvezi un eveniment real, un obiect, în localStorage și îl citești înapoi.
@@ -117,6 +136,13 @@ console.log("--- Exercițiul 4 ---");
      rezultatul e undefined. Fără JSON.parse nu poți intra în el. */
 
 console.log("--- Exercițiul 5 ---");
+
+const evenimentTau = { nume: "Meetup React", locuri: 25 };
+const text5 = JSON.stringify(evenimentTau);
+console.log(text5);
+localStorage.setItem("eveniment", text5);
+const citit5 = JSON.parse(localStorage.getItem("eveniment"));
+console.log(citit5.nume);
 
 
 /* ===== Exercițiul 6 · SINGUR · 3 min · Salvează lista =====
@@ -247,6 +273,9 @@ function rezerva(id) {
   }
   evenimente[index].locuri = evenimente[index].locuri - 1;
   descriere.textContent = "Loc rezervat!";
+  sessionStorage.setItem("ultimulRezervat", evenimente[index].nume);
+  rezervari.push(evenimente[index].nume);
+  localStorage.setItem("rezervari", JSON.stringify(rezervari));
   salveazaInBrowser();
   randeaza();
 }
@@ -269,6 +298,11 @@ lista.addEventListener("click", (event) => {
 });
 
 randeaza();
+
+function salveazaInBrowser() {
+  const date = { evenimente: evenimente, urmatorulId: urmatorulId };
+  localStorage.setItem("campusHub", JSON.stringify(date));
+}
 
 
 /* ===== Exercițiul 7 · GHIDAT · 8 min · Încarcă lista =====
@@ -294,6 +328,16 @@ randeaza();
 
 console.log("--- Exercițiul 7 ---");
 
+function incarcaDinBrowser() {
+  const text = localStorage.getItem("campusHub");
+  if (text === null) return;
+  const date = JSON.parse(text);
+  evenimente = date.evenimente;
+  urmatorulId = date.urmatorulId;
+  randeaza();
+}
+incarcaDinBrowser();
+
 
 /* ===== Exercițiul 8 · SINGUR · 2 min · Ciorna se șterge =====
    CE FACI: După ce adaugi un eveniment, ciorna din câmp nu mai trebuie păstrată în dulap.
@@ -314,6 +358,10 @@ console.log("--- Exercițiul 7 ---");
      ciorna se șterge la fiecare încărcare a paginii, nu la click pe „Adaugă”. */
 
 console.log("--- Exercițiul 8 ---");
+
+butonAdauga.addEventListener("click", () => {
+  localStorage.removeItem("ciorna");
+});
 
 
 /* ===== Exercițiul 9 · GHIDAT · 21 min · Temă luminoasă și întunecată, cu Copilot =====
@@ -365,6 +413,33 @@ console.log("--- Exercițiul 8 ---");
 
 console.log("--- Exercițiul 9 ---");
 
+const butonTema = document.querySelector("#buton-tema");
+butonTema.addEventListener("click", () => {
+  document.body.classList.toggle("intunecat");
+  if (document.body.classList.contains("intunecat")) {
+    localStorage.setItem("tema", "intunecat");
+  } else {
+    localStorage.setItem("tema", "luminos");
+  }
+});
+let temaSistem = "luminos";
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  temaSistem = "intunecat";
+}
+const tema = localStorage.getItem("tema") ?? temaSistem;
+if (tema === "intunecat") {
+  document.body.classList.add("intunecat");
+}
+
+// În evenimente.css:
+// :root { --fundal: #f8fafc; --text: #333333; --card: #ffffff; }
+// body.intunecat { --fundal: #111827; --text: #f9fafb; --card: #1f2937; }
+// body { background-color: var(--fundal); color: var(--text); }
+// .header, .card { background-color: var(--card); }
+//
+// În evenimente.html, în <body>, sub antet:
+// <button id="buton-tema" type="button">Schimbă tema</button>
+
 
 /* ===== TEMĂ DE ACASĂ · Campus Hub își amintește rezervările =====
    CE FACI: Pagina ține minte, cât timp tab-ul e deschis, ultimul eveniment rezervat, iar în
@@ -399,3 +474,15 @@ console.log("--- Exercițiul 9 ---");
      compară-l cu localStorage: ce are în plus? (expirare, trimis la server).
    GREȘEALĂ FRECVENTĂ: Citești rezervari cu getItem și o folosești direct ca array: e text,
      iar rezervari.push nu există. Fără JSON.parse nu poți adăuga în ea. */
+
+console.log("--- Tema de acasă ---");
+const rezervari = JSON.parse(localStorage.getItem("rezervari") ?? "[]");
+const ultimulRezervat = sessionStorage.getItem("ultimulRezervat");
+if (ultimulRezervat !== null) {
+  descriere.textContent = "Ultimul rezervat: " + ultimulRezervat;
+}
+console.log("Rezervări în total: " + rezervari.length);
+
+// Cookies, de studiat singur, în Console:
+// document.cookie = "tema=intunecat; max-age=60";
+// console.log(document.cookie);
